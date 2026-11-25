@@ -1,0 +1,45 @@
+# DETR on Pascal VOC 2007, 3-class subset (bird, cat, dog).
+# ~65 min on a single RTX 4070 Laptop GPU (8 GB).
+
+data:
+  root: ~/datasets/VOC            # VOC 2007 is downloaded here on first use (~900 MB)
+  classes: [bird, cat, dog]
+  val_size: 125                   # images held out from VOC07 trainval for model selection
+  train_scales: [288, 320, 352, 384, 416, 448, 480]
+  max_size: 640
+  eval_size: 416
+  num_workers: 4
+
+model:
+  backbone: resnet50
+  pretrained_backbone: true
+  train_backbone_layers: [layer2, layer3, layer4]
+  d_model: 256
+  n_heads: 8
+  enc_layers: 4
+  dec_layers: 4
+  dim_ffn: 1024
+  dropout: 0.1
+  num_queries: 20
+
+loss:
+  cost_class: 1.0
+  cost_bbox: 5.0
+  cost_giou: 2.0
+  eos_coef: 0.1
+  aux_loss: true
+
+train:
+  output_dir: runs/voc_bird_cat_dog
+  epochs: 100
+  lr_drop_epoch: 75
+  batch_size: 8
+  accum_steps: 1
+  lr: 1.0e-4
+  lr_backbone: 1.0e-5
+  weight_decay: 1.0e-4
+  clip_norm: 0.1
+  warmup_iters: 300
+  amp: true                       # bfloat16 autocast on CUDA
+  eval_every: 5
+  seed: 42

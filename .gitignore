@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Tooling
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.vscode/
+.idea/
+
+# Experiments, data and weights (publish checkpoints as GitHub Release assets)
+runs/
+predictions/
+data/
+*.pt
+*.pth
+*.tar
