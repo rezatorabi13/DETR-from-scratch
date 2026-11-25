@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="DETR from Scratch: end-to-end object detection with transformers" width="100%">
+  <img src="assets/banner.png" alt="DETR from Scratch: end-to-end object detection with transformers" width="100%">
 </p>
 
 A from-scratch PyTorch implementation of **DETR** ([Carion et al., *End-to-End Object Detection with Transformers*, ECCV 2020](https://arxiv.org/abs/2005.12872)), trained end to end on Pascal VOC on a single laptop GPU.
