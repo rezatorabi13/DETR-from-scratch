@@ -17,7 +17,7 @@ venv/
 # Experiments, data and weights (publish checkpoints as GitHub Release assets)
 runs/
 predictions/
-data/
+/data/
 *.pt
 *.pth
 *.tar
